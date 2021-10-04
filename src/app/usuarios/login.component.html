@@ -1,0 +1,79 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Iniciar Sesión
+    </ng-template>
+    <div class="main-div">
+      <mat-card class="example-card">
+        <mat-card-subtitle>Iniciar Sesión</mat-card-subtitle>
+        <mat-card-title>BWL Dashboard</mat-card-title>
+        <mat-divider inset></mat-divider>
+        <br/>
+        <mat-form-field appearance="fill" class="container-input">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput placeholder="admin@bwl.com" [(ngModel)]="usuario.username" type="text"
+                 name="username" id="username" autofocus required>
+
+          <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="container-input">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" placeholder="12345" [(ngModel)]="usuario.password"  required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage('password')}}</mat-error>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <input (click)='login()' type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar Sesión">
+        </mat-card-actions>
+        <mat-card-footer>
+          <mat-progress-bar mode="indeterminate" *ngIf="sendData"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Registro
+    </ng-template>
+    <div class="main-div">
+      <mat-card class="example-card">
+        <mat-card-subtitle>Crear Cuenta</mat-card-subtitle>
+        <mat-card-title>BWL Dashboard</mat-card-title>
+        <mat-divider inset></mat-divider>
+        <br/>
+        <mat-form-field appearance="fill" class="container-input">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput placeholder="usuario@bwl.com" [(ngModel)]="cliente.username" type="text"
+                 name="_username" id="_username" required>
+
+          <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="container-input">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" [(ngModel)]="cliente.password_repeat" name="password" id="password" required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage('password')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="container-input">
+          <mat-label>Repetir Contraseña</mat-label>
+          <input matInput type="password" [(ngModel)]="cliente.password" name="password_repeat" id="password_repeat"  required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage('password')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="container-input">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="usuario@bwl.com" [(ngModel)]="cliente.nombre" type="text"
+                 name="nombre" id="nombre" required>
+
+          <mat-error *ngIf="nombre.invalid">{{getErrorMessage('nombre')}}</mat-error>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <input (click)='create()' type="submit" class="btn btn-lg btn-primary btn-block" value="Crear Cuenta">
+        </mat-card-actions>
+        <mat-card-footer>
+          <mat-progress-bar mode="indeterminate" *ngIf="sendData"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

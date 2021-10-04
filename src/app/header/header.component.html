@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="example-spacer"></span>
+    <ul class="navbar-nav navbar-right">
+      <li *ngIf="authService.isAuthenticated()" class="dropdown">
+        <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{authService.usuario.username}}
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <button [routerLink]="['/clientes']" class="dropdown-item" type="submit">Usuarios</button>
+          <button (click)="logout()" class="dropdown-item" type="submit">Cerrar Sesión</button>
+
+        </div>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
+

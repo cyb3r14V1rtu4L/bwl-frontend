@@ -1,0 +1,102 @@
+<mat-grid-list cols="2"rowHeight="2:1" >
+  <mat-grid-tile>
+    <mat-card class="example-card" >
+      <mat-card-subtitle>Clima</mat-card-subtitle>
+      <mat-divider inset></mat-divider>
+      <mat-card-content class="center-card">
+        <img src="{{climaIcon}}">
+        <h5>{{tempC}} C</h5>
+        <h6>{{condText}}</h6>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate" *ngIf="sendDataWeather"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-subtitle>País / Ciudad</mat-card-subtitle>
+      <mat-divider inset></mat-divider>
+      <mat-card-content class="center-card">
+        <br/>
+        <mat-form-field appearance="fill" class="container-input">
+          <mat-label>País, Ciudad</mat-label>
+          <input matInput type="text" [(ngModel)]="pais.nombre"  placeholder="México">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+        <button mat-button class="mat-primary" (click)="getWeather()">Actualizar</button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate" *ngIf="sendDataWeather"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-subtitle>Tareas Pendientes</mat-card-subtitle>
+      <mat-divider inset></mat-divider>
+      <mat-card-content>
+        <br/>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let tarea of tareasPendientes">{{ tarea.titulo }}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+  <mat-card class="example-card">
+    <mat-card-subtitle>Hora</mat-card-subtitle>
+    <mat-divider inset></mat-divider>
+    <mat-card-content class="center-card" style="padding-top: 30px">
+      <h2>{{now | date:'h:mm:ss a '}}</h2>
+      <h5>{{tz_id}}</h5>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" *ngIf="sendDataWeather"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-subtitle>Tareas Completadas</mat-card-subtitle>
+      <mat-divider inset></mat-divider>
+      <mat-card-content>
+        <br/>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let tarea of tareasCompletadas">{{ tarea.titulo }}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate" *ngIf="sendDataWeather"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-subtitle>Zonas Horarias Disponibles</mat-card-subtitle>
+      <mat-divider inset></mat-divider>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+      </mat-card-actions>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

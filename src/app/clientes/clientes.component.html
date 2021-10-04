@@ -1,0 +1,30 @@
+<detalle-cliente *ngIf="clienteSeleccionado" [cliente] ="clienteSeleccionado"></detalle-cliente>
+
+<div class="card border-primary mb-3">
+  <div class="card-header">Usuarios</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de Usuarios</h5>
+    <div *ngIf="clientes?.length == 0" class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+    <table class="table table-bordered table-striped" *ngIf="clientes?.length>0">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo Electrónico</th>
+          <th>Fecha de Registro</th>
+          <th>Último Login</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.nombre }} {{ cliente.apellido | uppercase }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>{{ cliente.createAt }}</td>
+          <td>{{ cliente.lastSignin | date:"h:mm:ss a"}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+  </div>
+</div>
